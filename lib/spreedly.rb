@@ -82,6 +82,13 @@ module Spreedly
     end
   end
 
+  class Transaction < Resource
+    # Returns all the transactions for your site.
+    def self.all
+      Spreedly.get('/transactions.xml')['transactions'].collect{|data| new(data)}
+    end
+  end
+
   class Subscriber < Resource
 
     # This will DELETE all the subscribers from the site.
